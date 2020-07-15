@@ -4,6 +4,9 @@ import re
 import random
 import time
 import math
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import numpy as np
 
 import torch
 import torch.nn as nn
@@ -354,8 +357,8 @@ def train(input_variable, target_variable, all_vars_train, max_length=MAX_LENGTH
 
 
 
-def evaluate(sentence, input_lang, output_lang, encoder, decoder, max_length=MAX_LENGTH):
-    for_evaluations = input_lang, output_lang, encoder, decoder
+def evaluate(sentence, for_evaluations, max_length=MAX_LENGTH):
+    input_lang, output_lang, encoder, decoder = for_evaluations
     input_variable = variable_from_sentence(input_lang, sentence)
     input_length = input_variable.size()[0]
     
